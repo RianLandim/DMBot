@@ -6,8 +6,8 @@ module.exports = {
     const channel = "804758884719001611";
       
       //Roles//
-    const snzRole = msg.guild.roles.cache.find((r) => r.name === "SnzFriend");
-    const zorkRole = msg.guild.roles.cache.find((r) => r.name === "ZorkadorFriend")
+    const rustRole = msg.guild.roles.cache.find((r) => r.name === "Rust");
+    const csgoRole = msg.guild.roles.cache.find((r) => r.name === "CounterStrike")
       
       //Emojis//
     const csgo = "🔫";
@@ -28,7 +28,7 @@ module.exports = {
       //ReactionBot//
     messageEmbed.react(csgo);
     messageEmbed.react(rust);
-    
+
       //RoleReaction//
     client.on("messageReactionAdd", async (reaction, user) => {
       if(reaction.message.partial) await reaction.message.fecth();
@@ -38,10 +38,10 @@ module.exports = {
 
       if(reaction.message.channel.id == channel) {
         if(reaction.emoji.name === csgo){
-          await reaction.message.guild.members.cache.get(user.id).roles.add(snzRole);
+          await reaction.message.guild.members.cache.get(user.id).roles.add(rustRole);
         }
         if(reaction.emoji.name === rust){
-          await reaction.message.guild.members.cache.get(user.id).roles.add(zorkRole);
+          await reaction.message.guild.members.cache.get(user.id).roles.add(csgoRole);
         }
       }else{
         return;
@@ -56,10 +56,10 @@ module.exports = {
 
       if(reaction.message.channel.id == channel){
         if(reaction.emoji.name === csgo){
-          await reaction.message.guild.members.cache.get(user.id).roles.remove(snzRole);
+          await reaction.message.guild.members.cache.get(user.id).roles.remove(rustRole);
         }
         if(reaction.emoji.name === rust){
-          await reaction.message.guild.members.cache.get(user.id).roles.remove(zorkRole);
+          await reaction.message.guild.members.cache.get(user.id).roles.remove(csgoRole);
         }
       }else{
         return;
