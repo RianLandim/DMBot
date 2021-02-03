@@ -27,10 +27,10 @@ client.once("ready", () => {
 //Greetings
 client.on("guildMemberAdd", (member) => {
   const channel = member.guild.channels.cache.find(
-    (ch) => ch.name === "Portal-de-entrada"
+    (ch) => ch.name === "portal-de-entrada"
   );
   if (!channel) return;
-  channel.send(`Seja bem-vindo ao server da DM ${member}!`);
+  channel.send(`Seja bem-vindo ao server da DM ${member}, acesse o Cargos para ganhar acesso ao servidor!`);
 });
 
 //Status
@@ -38,10 +38,10 @@ client.on("guildMemberAdd", (member) => {
 
 // Commands
 client.on("message", (msg) => {
+
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
-
   if (command === "kick") {
     client.commands.get("kick").execute(msg, args);
   } else if (command === "clear") {
@@ -49,8 +49,6 @@ client.on("message", (msg) => {
   } else if (command === "reactionrole") {
     client.commands.get("reactionrole").execute(msg, args, Discord, client);
   } else if (command === "") {
-  } else if (command === prefix) {
-    msg.reply("Insira um comando");
   }
 });
 

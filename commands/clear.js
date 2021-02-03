@@ -2,8 +2,7 @@ module.exports = {
   name: "clear",
   help: "Limpa uma quantitade X(1-100) de mensagens!",
   async execute(msg, args) {
-    const member = msg.mentions.members.first();
-    if (member.roles.cache.some((role) => role.name === "Demencius King")) {
+    if(msg.member.roles.cache.has('367868660779319324')){
       if (!args[0])
         return msg.reply(
           "Insira uma quantidade de mensagens para serem apagadas!"
@@ -17,6 +16,8 @@ module.exports = {
       await msg.channel.messages.fetch({ limit: args[0] }).then((messages) => {
         msg.channel.bulkDelete(messages);
       });
+    }else{
+      msg.reply('Você não tem permissão para usar esse comando!')
     }
-  },
-};
+  }
+}
