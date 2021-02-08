@@ -30,15 +30,16 @@ client.on("guildMemberAdd", (member) => {
     (ch) => ch.name === "portal-de-entrada"
   );
   if (!channel) return;
-  channel.send(`Seja bem-vindo ao server da DM ${member}, acesse o Cargos para ganhar acesso ao servidor!`);
+  channel.send(
+    `Seja bem-vindo ao server da DM ${member}, acesse o Cargos para ganhar acesso ao servidor!`
+  );
 });
 
 //Status
-//client.user.setPresence({ activity: { name: "So de olho!" }, status: "Idle" });
+//client.user.setActivity({ activity: { name: "So de olho!" }, type: "WATCHING" });
 
 // Commands
 client.on("message", (msg) => {
-
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
